@@ -60,7 +60,7 @@ module "pages" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_account_id"></a> [account\_id](#input\_account\_id) | Cloudflare account ID | `string` | n/a | yes |
-| <a name="input_projects"></a> [projects](#input\_projects) | Map of Cloudflare Pages projects to create | <pre>map(object({<br/>    name               = string<br/>    production_branch  = string<br/>    github_repo        = string<br/>    build_command      = string<br/>    destination_dir    = string<br/>    custom_domain      = optional(string)<br/>    environment_variables = optional(map(string), {})<br/>  }))</pre> | n/a | yes |
+| <a name="input_projects"></a> [projects](#input\_projects) | Map of Cloudflare Pages projects to create | <pre>map(object({<br/>    name                       = string<br/>    production_branch          = string<br/>    github_repo                = string<br/>    build_command              = string<br/>    destination_dir            = string<br/>    custom_domain              = optional(string)<br/>    preview_deployment_setting = optional(string, "none")<br/>    environment_variables      = optional(map(string), {})<br/>  }))</pre> | n/a | yes |
 
 ## Outputs
 
