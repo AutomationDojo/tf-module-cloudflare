@@ -78,6 +78,36 @@ module "pages" {
 }
 ```
 
+### With Preview Deployment Settings
+
+```hcl
+module "pages" {
+  source = "git::git@github.com:AutomationDojo/tf-module-cloudflare.git//modules/pages?ref=v1.0.0"
+
+  account_id = var.cloudflare_account_id
+
+  projects = {
+    production-site = {
+      name                       = "production-site"
+      production_branch          = "main"
+      github_repo                = "company/website"
+      build_command              = "npm run build"
+      destination_dir            = "dist"
+      preview_deployment_setting = "none"  # Disable preview deployments
+    }
+
+    staging-site = {
+      name                       = "staging-site"
+      production_branch          = "main"
+      github_repo                = "company/staging"
+      build_command              = "npm run build"
+      destination_dir            = "dist"
+      preview_deployment_setting = "all"  # Enable preview deployments for all branches
+    }
+  }
+}
+```
+
 ### Multiple Projects
 
 ```hcl
@@ -134,6 +164,7 @@ module "pages" {
 | `build_command` | Build command to run | `string` | Yes | - |
 | `destination_dir` | Output directory after build | `string` | Yes | - |
 | `custom_domain` | Custom domain for the project | `string` | No | `null` |
+| `preview_deployment_setting` | Preview deployment setting (`"none"` or `"all"`) | `string` | No | `"none"` |
 | `environment_variables` | Build environment variables | `map(string)` | No | `{}` |
 
 ## Outputs
@@ -191,6 +222,14 @@ When using custom domains, ensure:
 
 !!! tip "Environment Variables"
     Environment variables are available during build time. For runtime variables in frameworks like Next.js, use the appropriate prefix (e.g., `NEXT_PUBLIC_`).
+
+!!! info "Preview Deployments"
+    The `preview_deployment_setting` controls automatic deployments for non-production branches:
+
+    - `"none"`: Disables preview deployments (default)
+    - `"all"`: Enables preview deployments for all branches
+
+    Use `"none"` for production sites to avoid unnecessary builds, or `"all"` for development/staging environments where you want to preview changes from all branches.
 
 ## Related
 
