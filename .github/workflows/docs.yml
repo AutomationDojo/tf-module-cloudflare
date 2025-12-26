@@ -1,0 +1,37 @@
+name: Generate Terraform Docs
+
+on:
+  pull_request:
+    paths:
+      - 'modules/**/**.tf'
+      - '.terraform-docs.yml'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        module:
+          - repository
+          - repository-ruleset
+
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Render terraform docs for ${{ matrix.module }}
+        uses: terraform-docs/gh-actions@v1
+        with:
+          working-dir: modules/${{ matrix.module }}
+          output-file: README.md
+          output-method: inject
+          git-push: true
+          git-commit-message: 'docs: update terraform-docs for ${{ matrix.module }}'
