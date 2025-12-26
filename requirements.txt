@@ -1,0 +1,7 @@
+# MkDocs and dependencies
+mkdocs>=1.5.3
+mkdocs-material>=9.5.0
+mkdocs-glightbox>=0.3.5
+
+# Markdown extensions
+pymdown-extensions>=10.5

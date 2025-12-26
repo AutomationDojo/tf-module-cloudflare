@@ -46,3 +46,5 @@ terraform.rc
 # OS
 .DS_Store
 Thumbs.db
+
+venv/*

@@ -99,6 +99,29 @@ module "email" {
 }
 ```
 
+## Documentation
+
+Full documentation is available at: **https://automationdojo.github.io/tf-module-cloudflare**
+
+- [Getting Started](https://automationdojo.github.io/tf-module-cloudflare/getting-started/installation/)
+- [Modules Documentation](https://automationdojo.github.io/tf-module-cloudflare/modules/)
+- [Complete Examples](https://automationdojo.github.io/tf-module-cloudflare/examples/complete-setup/)
+
+### Local Documentation
+
+To view the documentation locally:
+
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Serve documentation locally
+mkdocs serve
+
+# Open http://127.0.0.1:8000 in your browser
+```
+
+
 ## Examples
 
 See [examples](./examples/) directory for complete usage examples.
