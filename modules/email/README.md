@@ -167,4 +167,39 @@ module "email" {
 4. **Account ID**: The `account_id` is optional but recommended. If not provided, Terraform will attempt to use the default account associated with the zone.
 
 <!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 4.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | ~> 4.0 |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [cloudflare_email_routing_address.addresses](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/email_routing_address) | resource |
+| [cloudflare_email_routing_rule.rules](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/email_routing_rule) | resource |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_account_id"></a> [account\_id](#input\_account\_id) | Cloudflare account ID | `string` | `null` | no |
+| <a name="input_email_routing"></a> [email\_routing](#input\_email\_routing) | Email routing configuration | <pre>object({<br/>    enabled = bool<br/>    rules = list(object({<br/>      name     = string<br/>      matchers = list(object({<br/>        type  = string<br/>        field = string<br/>        value = string<br/>      }))<br/>      actions = list(object({<br/>        type  = string<br/>        value = list(string)<br/>      }))<br/>      enabled  = optional(bool, true)<br/>      priority = optional(number, 0)<br/>    }))<br/>    addresses = optional(list(object({<br/>      email = string<br/>    })), [])<br/>  })</pre> | <pre>{<br/>  "addresses": [],<br/>  "enabled": false,<br/>  "rules": []<br/>}</pre> | no |
+| <a name="input_zone_id"></a> [zone\_id](#input\_zone\_id) | Cloudflare zone ID | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output_email_addresses"></a> [email\_addresses](#output\_email\_addresses) | Map of email addresses created |
+| <a name="output_email_routing_status"></a> [email\_routing\_status](#output\_email\_routing\_status) | Email routing status (managed manually or via API) |
+| <a name="output_email_rules"></a> [email\_rules](#output\_email\_rules) | Map of email routing rules created |
 <!-- END_TF_DOCS -->
