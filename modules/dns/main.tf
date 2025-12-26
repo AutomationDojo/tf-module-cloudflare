@@ -4,7 +4,7 @@ resource "cloudflare_record" "records" {
   zone_id = var.zone_id
   name    = each.value.name
   type    = each.value.type
-  value   = each.value.value
+  content = each.value.value
   ttl     = each.value.ttl
   proxied = each.value.proxied
 
