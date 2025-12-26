@@ -10,15 +10,51 @@ permissions:
   contents: write
   pull-requests: write
 
+# ------------------------------------------------------------
+# Job 1 — Detect changed modules dynamically
+# ------------------------------------------------------------
 jobs:
+  detect-modules:
+    name: Detect changed Terraform modules
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build module matrix
+        id: set-matrix
+        run: |
+          CHANGED_MODULES=$(git diff --name-only origin/${{ github.base_ref }}...HEAD \
+            | grep '^modules/' \
+            | cut -d/ -f2 \
+            | sort -u)
+
+          if [ -z "$CHANGED_MODULES" ]; then
+            echo 'matrix={"module":[]}' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          MATRIX_JSON=$(echo "$CHANGED_MODULES" | jq -R -s -c 'split("\n")[:-1]')
+          echo "matrix={\"module\":$MATRIX_JSON}" >> "$GITHUB_OUTPUT"
+
+# ------------------------------------------------------------
+# Job 2 — Generate terraform-docs only for changed modules
+# ------------------------------------------------------------
   docs:
+    name: Terraform Docs — ${{ matrix.module }}
+    needs: detect-modules
+    if: ${{ needs.detect-modules.outputs.matrix != '{"module":[]}' }}
     runs-on: ubuntu-latest
 
     strategy:
-      matrix:
-        module:
-          - repository
-          - repository-ruleset
+      fail-fast: false
+      matrix: ${{ fromJson(needs.detect-modules.outputs.matrix) }}
 
     steps:
       - name: Checkout PR branch
