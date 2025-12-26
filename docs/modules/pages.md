@@ -108,45 +108,6 @@ module "pages" {
 }
 ```
 
-### Multiple Projects
-
-```hcl
-module "pages" {
-  source = "git::git@github.com:AutomationDojo/tf-module-cloudflare.git//modules/pages?ref=v1.0.0"
-
-  account_id = var.cloudflare_account_id
-
-  projects = {
-    landing-page = {
-      name              = "landing-page"
-      production_branch = "main"
-      github_repo       = "company/landing"
-      build_command     = "npm run build"
-      destination_dir   = "dist"
-      custom_domain     = "www.example.com"
-    }
-
-    blog = {
-      name              = "company-blog"
-      production_branch = "main"
-      github_repo       = "company/blog"
-      build_command     = "hugo"
-      destination_dir   = "public"
-      custom_domain     = "blog.example.com"
-    }
-
-    docs = {
-      name              = "documentation"
-      production_branch = "main"
-      github_repo       = "company/docs"
-      build_command     = "mkdocs build"
-      destination_dir   = "site"
-      custom_domain     = "docs.example.com"
-    }
-  }
-}
-```
-
 ## Inputs
 
 | Name | Description | Type | Required |
