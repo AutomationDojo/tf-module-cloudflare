@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/AutomationDojo/tf-module-cloudflare/compare/v1.0.0...v1.1.0) (2025-12-26)
+
+### Features
+
+* add email module ([e55d3dd](https://github.com/AutomationDojo/tf-module-cloudflare/commit/e55d3dd73aaf1f5c9fb15a4cb3095a5921af7228))
+
 ## 1.0.0 (2025-12-26)
 
 ### Features
