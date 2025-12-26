@@ -748,10 +748,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#multiple-projects" class="md-nav__link">
+  <a href="#with-preview-deployment-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiple Projects
+        With Preview Deployment Settings
       
     </span>
   </a>
@@ -1172,10 +1172,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#multiple-projects" class="md-nav__link">
+  <a href="#with-preview-deployment-settings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiple Projects
+        With Preview Deployment Settings
       
     </span>
   </a>
@@ -1386,41 +1386,32 @@
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span><span class="p">}</span>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="p">}</span>
 </code></pre></div>
-<h3 id="multiple-projects">Multiple Projects<a class="headerlink" href="#multiple-projects" title="Permanent link">¶</a></h3>
+<h3 id="with-preview-deployment-settings">With Preview Deployment Settings<a class="headerlink" href="#with-preview-deployment-settings" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kr">module</span><span class="w"> </span><span class="nv">"pages"</span><span class="w"> </span><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="na">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::git@github.com:AutomationDojo/tf-module-cloudflare.git//modules/pages?ref=v1.0.0"</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="na">account_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.cloudflare_account_id</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span><span class="nb">projects</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nb">landing-page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">      </span><span class="na">name</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"landing-page"</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">      </span><span class="na">production_branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"main"</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="na">github_repo</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"company/landing"</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">      </span><span class="na">build_command</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"npm run build"</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">      </span><span class="na">destination_dir</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"dist"</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">      </span><span class="na">custom_domain</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"www.example.com"</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nb">production-site</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">      </span><span class="na">name</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"production-site"</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">      </span><span class="na">production_branch</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"main"</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="na">github_repo</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">"company/website"</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">      </span><span class="na">build_command</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"npm run build"</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">      </span><span class="na">destination_dir</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"dist"</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">      </span><span class="na">preview_deployment_setting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="c1">  # Disable preview deployments</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="p">}</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nb">blog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">      </span><span class="na">name</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"company-blog"</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="na">production_branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"main"</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">      </span><span class="na">github_repo</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"company/blog"</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">      </span><span class="na">build_command</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"hugo"</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">      </span><span class="na">destination_dir</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"public"</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">      </span><span class="na">custom_domain</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"blog.example.com"</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nb">staging-site</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">      </span><span class="na">name</span><span class="w">                       </span><span class="o">=</span><span class="w"> </span><span class="s2">"staging-site"</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="na">production_branch</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"main"</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">      </span><span class="na">github_repo</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">"company/staging"</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">      </span><span class="na">build_command</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"npm run build"</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">      </span><span class="na">destination_dir</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"dist"</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">      </span><span class="na">preview_deployment_setting</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"all"</span><span class="c1">  # Enable preview deployments for all branches</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="nb">docs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">      </span><span class="na">name</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"documentation"</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">      </span><span class="na">production_branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"main"</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">      </span><span class="na">github_repo</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"company/docs"</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">      </span><span class="na">build_command</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"mkdocs build"</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">      </span><span class="na">destination_dir</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"site"</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">      </span><span class="na">custom_domain</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"docs.example.com"</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="inputs">Inputs<a class="headerlink" href="#inputs" title="Permanent link">¶</a></h2>
 <table>
@@ -1502,6 +1493,13 @@
 <td><code>null</code></td>
 </tr>
 <tr>
+<td><code>preview_deployment_setting</code></td>
+<td>Preview deployment setting (<code>"none"</code> or <code>"all"</code>)</td>
+<td><code>string</code></td>
+<td>No</td>
+<td><code>"none"</code></td>
+</tr>
+<tr>
 <td><code>environment_variables</code></td>
 <td>Build environment variables</td>
 <td><code>map(string)</code></td>
@@ -1577,6 +1575,15 @@
 <div class="admonition tip">
 <p class="admonition-title">Environment Variables</p>
 <p>Environment variables are available during build time. For runtime variables in frameworks like Next.js, use the appropriate prefix (e.g., <code>NEXT_PUBLIC_</code>).</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Preview Deployments</p>
+<p>The <code>preview_deployment_setting</code> controls automatic deployments for non-production branches:</p>
+<ul>
+<li><code>"none"</code>: Disables preview deployments (default)</li>
+<li><code>"all"</code>: Enables preview deployments for all branches</li>
+</ul>
+<p>Use <code>"none"</code> for production sites to avoid unnecessary builds, or <code>"all"</code> for development/staging environments where you want to preview changes from all branches.</p>
 </div>
 <h2 id="related">Related<a class="headerlink" href="#related" title="Permanent link">¶</a></h2>
 <ul>
