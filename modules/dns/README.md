@@ -37,35 +37,4 @@ module "dns" {
 ```
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
-
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
-| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | ~> 4.0 |
-
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | ~> 4.0 |
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [cloudflare_record.records](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record) | resource |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_records"></a> [records](#input\_records) | List of DNS records to create | <pre>list(object({<br/>    name    = string<br/>    type    = string<br/>    value   = string<br/>    ttl     = optional(number, 1)<br/>    proxied = optional(bool, false)<br/>  }))</pre> | `[]` | no |
-| <a name="input_zone_id"></a> [zone\_id](#input\_zone\_id) | Cloudflare zone ID | `string` | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| <a name="output_records"></a> [records](#output\_records) | Map of DNS records created |
 <!-- END_TF_DOCS -->

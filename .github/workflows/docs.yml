@@ -6,12 +6,17 @@ on:
       - 'modules/**/**.tf'
       - '.terraform-docs.yml'
 
+# 🔒 Ensure only the latest run per PR can push docs
+concurrency:
+  group: terraform-docs-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: write
   pull-requests: write
 
 # ------------------------------------------------------------
-# Job 1 — Detect changed modules dynamically
+# Job 1 — Detect changed Terraform modules dynamically
 # ------------------------------------------------------------
 jobs:
   detect-modules:
