@@ -78,7 +78,7 @@ module "pages" {
 }
 ```
 
-### Multiple Projects
+### With Preview Deployment Settings
 
 ```hcl
 module "pages" {
@@ -87,31 +87,22 @@ module "pages" {
   account_id = var.cloudflare_account_id
 
   projects = {
-    landing-page = {
-      name              = "landing-page"
-      production_branch = "main"
-      github_repo       = "company/landing"
-      build_command     = "npm run build"
-      destination_dir   = "dist"
-      custom_domain     = "www.example.com"
+    production-site = {
+      name                       = "production-site"
+      production_branch          = "main"
+      github_repo                = "company/website"
+      build_command              = "npm run build"
+      destination_dir            = "dist"
+      preview_deployment_setting = "none"  # Disable preview deployments
     }
 
-    blog = {
-      name              = "company-blog"
-      production_branch = "main"
-      github_repo       = "company/blog"
-      build_command     = "hugo"
-      destination_dir   = "public"
-      custom_domain     = "blog.example.com"
-    }
-
-    docs = {
-      name              = "documentation"
-      production_branch = "main"
-      github_repo       = "company/docs"
-      build_command     = "mkdocs build"
-      destination_dir   = "site"
-      custom_domain     = "docs.example.com"
+    staging-site = {
+      name                       = "staging-site"
+      production_branch          = "main"
+      github_repo                = "company/staging"
+      build_command              = "npm run build"
+      destination_dir            = "dist"
+      preview_deployment_setting = "all"  # Enable preview deployments for all branches
     }
   }
 }
@@ -134,6 +125,7 @@ module "pages" {
 | `build_command` | Build command to run | `string` | Yes | - |
 | `destination_dir` | Output directory after build | `string` | Yes | - |
 | `custom_domain` | Custom domain for the project | `string` | No | `null` |
+| `preview_deployment_setting` | Preview deployment setting (`"none"` or `"all"`) | `string` | No | `"none"` |
 | `environment_variables` | Build environment variables | `map(string)` | No | `{}` |
 
 ## Outputs
@@ -191,6 +183,14 @@ When using custom domains, ensure:
 
 !!! tip "Environment Variables"
     Environment variables are available during build time. For runtime variables in frameworks like Next.js, use the appropriate prefix (e.g., `NEXT_PUBLIC_`).
+
+!!! info "Preview Deployments"
+    The `preview_deployment_setting` controls automatic deployments for non-production branches:
+
+    - `"none"`: Disables preview deployments (default)
+    - `"all"`: Enables preview deployments for all branches
+
+    Use `"none"` for production sites to avoid unnecessary builds, or `"all"` for development/staging environments where you want to preview changes from all branches.
 
 ## Related
 

@@ -14,7 +14,7 @@ resource "cloudflare_pages_project" "projects" {
       pr_comments_enabled           = true
       deployments_enabled           = true
       production_deployment_enabled = true
-      preview_deployment_setting    = "all"
+      preview_deployment_setting    = each.value.preview_deployment_setting
       preview_branch_includes       = ["*"]
     }
   }
