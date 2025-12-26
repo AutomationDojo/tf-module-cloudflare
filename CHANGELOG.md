@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/AutomationDojo/tf-module-cloudflare/compare/v1.1.0...v1.2.0) (2025-12-26)
+
+### Features
+
+* add optional parameters ([#4](https://github.com/AutomationDojo/tf-module-cloudflare/issues/4)) ([440fcef](https://github.com/AutomationDojo/tf-module-cloudflare/commit/440fceff5ea11482bc46e31521b8cd0409eb6c88))
+
 ## [1.1.0](https://github.com/AutomationDojo/tf-module-cloudflare/compare/v1.0.0...v1.1.0) (2025-12-26)
 
 ### Features
